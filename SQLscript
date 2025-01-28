@@ -1,6 +1,6 @@
-CREATE DATABASE SassexDB
+CREATE DATABASE SaxesDB
 
-USE SissaxDB
+USE SaxesDB
 
 GO
 
@@ -28,9 +28,9 @@ CREATE TABLE Appointments(
 AppointmentID INT PRIMARY KEY IDENTITY(1,1),
 EmployeeID INT,
 CustomerID INT,
-TreatmentID INT
-FOREIGN KEY (EmployeeID) REFERENCES Employees(EmployeeID)
-FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
+TreatmentID INT,
+FOREIGN KEY (EmployeeID) REFERENCES Employees(EmployeeID),
+FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID),
 FOREIGN KEY (TreatmentID) REFERENCES Treatments(TreatmentID)
 ) 
 
@@ -38,6 +38,6 @@ CREATE TABLE EmployeesTreatments(
 EmployeeID INT,
 TreatmentID INT
 PRIMARY KEY (EmployeeID,TreatmentID)
-FOREIGN KEY (EmployeeID) REFERENCES Employees(EmployeeID)
+FOREIGN KEY (EmployeeID) REFERENCES Employees(EmployeeID),
 FOREIGN KEY (TreatmentID) REFERENCES Treatments(TreatmentID)
 )
