@@ -1,0 +1,6 @@
+ALTER TABLE Treatments
+ADD Price DECIMAL(18, 2) NOT NULL DEFAULT 0;
+UPDATE Treatments SET Price = 300.00 WHERE TreatmentName = 'Massage';
+UPDATE Treatments SET Price = 330.00 WHERE TreatmentName = 'Ansiktsbehandling';
+UPDATE Treatments SET Price = 540.00 WHERE TreatmentName = 'Hårklippning';
+UPDATE Treatments SET Price = 145.00 WHERE TreatmentName = 'Manikyr';
