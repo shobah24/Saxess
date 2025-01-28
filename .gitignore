@@ -13,7 +13,7 @@
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
-# Models/SassexDbContext.cs
+Models/SassexDbContext.cs
 git rm --cached Models/SassexDbContext.cs
 
 # Mono auto generated files
