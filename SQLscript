@@ -1,0 +1,43 @@
+CREATE DATABASE SassexDB
+
+USE SissaxDB
+
+GO
+
+CREATE TABLE Customers(
+CustomerID INT PRIMARY KEY IDENTITY(1,1),
+FirstName VARCHAR(50),
+LastName VARCHAR(50),
+Email VARCHAR(100)
+)
+
+CREATE TABLE Employees(
+EmployeeID INT PRIMARY KEY IDENTITY(1,1),
+FirstName VARCHAR(50),
+LastName VARCHAR(50),
+Age INT
+)
+
+CREATE TABLE Treatments(
+TreatmentID INT PRIMARY KEY IDENTITY(1,1),
+TreatmentName VARCHAR(50),
+TreatmentType VARCHAR(50)
+)
+
+CREATE TABLE Appointments(
+AppointmentID INT PRIMARY KEY IDENTITY(1,1),
+EmployeeID INT,
+CustomerID INT,
+TreatmentID INT
+FOREIGN KEY (EmployeeID) REFERENCES Employees(EmployeeID)
+FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
+FOREIGN KEY (TreatmentID) REFERENCES Treatments(TreatmentID)
+) 
+
+CREATE TABLE EmployeesTreatments(
+EmployeeID INT,
+TreatmentID INT
+PRIMARY KEY (EmployeeID,TreatmentID)
+FOREIGN KEY (EmployeeID) REFERENCES Employees(EmployeeID)
+FOREIGN KEY (TreatmentID) REFERENCES Treatments(TreatmentID)
+)
