@@ -1,10 +1,10 @@
 ﻿namespace Saxess
 {
-    internal class Program
+    public class Program
     {
         static void Main(string[] args)
         {
-            var menu = new EmployeeMenu();
+            var menu = new MainMenu();
 
             menu.ViewMenu();
         }
