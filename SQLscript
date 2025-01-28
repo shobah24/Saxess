@@ -1,6 +1,6 @@
-CREATE DATABASE SaxesDB
+--CREATE DATABASE SassexDB
 
-USE SaxesDB
+--USE SassexDB
 
 GO
 
@@ -26,6 +26,7 @@ TreatmentType VARCHAR(50)
 
 CREATE TABLE Appointments(
 AppointmentID INT PRIMARY KEY IDENTITY(1,1),
+AppointmentDatetime DATETIME,
 EmployeeID INT,
 CustomerID INT,
 TreatmentID INT,
