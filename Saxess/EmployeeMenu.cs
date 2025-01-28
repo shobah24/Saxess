@@ -5,7 +5,7 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Saxess
 {
-    internal class EmployeeMenu : Menu
+    public class EmployeeMenu : Menu
 
     {
         private static string arrow = "<--";
