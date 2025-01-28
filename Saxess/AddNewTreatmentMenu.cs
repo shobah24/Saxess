@@ -38,10 +38,19 @@ namespace Saxess
                             throw new Exception("Treatment type cannot be empty");
                         }
 
+                        Console.Write("Enter the treatment price:");
+                        var treatmentPrice = decimal.Parse(Console.ReadLine());
+                        if (treatmentPrice <= 0)
+                        {
+                            throw new Exception("Invalid Price");
+                        }
+
+
                         var treatment = new Treatment
                         {
                             TreatmentName = treatmentName,
-                            TreatmentType = treatmentType
+                            TreatmentType = treatmentType,
+                            Price = treatmentPrice
                         };
 
                         context.Treatments.Add(treatment);

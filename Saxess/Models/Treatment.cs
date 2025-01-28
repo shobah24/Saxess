@@ -10,6 +10,8 @@ public partial class Treatment
     public string? TreatmentName { get; set; }
 
     public string? TreatmentType { get; set; }
+    public decimal? Price { get; set; }
+
 
     public virtual ICollection<Appointment> Appointments { get; set; } = new List<Appointment>();
 
