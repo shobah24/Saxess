@@ -24,6 +24,19 @@ namespace Saxess
 
                 var employeeId = int.Parse(Console.ReadLine());
 
+
+                Console.WriteLine("Choose a customer you would like to book:");
+
+                var customer = context.Customers.ToList();
+
+                foreach (var customrs in customer)
+                {
+                    Console.WriteLine($"{customrs.CustomerId}: {customrs.FirstName} {customrs.LastName}");
+                }
+
+                var customerID = int.Parse(Console.ReadLine());
+
+
                 Console.WriteLine("Choose a treatment you would like to get:");
                 var treatments = context.Treatments.ToList();
                 foreach (var treatment in treatments)
@@ -39,23 +52,33 @@ namespace Saxess
                     .Select(a => a.AppointmentDatetime)
                     .ToList();
 
+                int count = 1;
                 foreach (var time in bookedTimes)
                 {
-                    Console.WriteLine($"{time}");
+                    Console.WriteLine($"{count}. {time}");
+                    count++;
                 }
 
-                Console.Write("Choose a time (ex:2024-01-28 12:00): ");
-                var chosenTime = DateTime.Parse(Console.ReadLine());
+                Console.Write("Choose a time: ");
+                int chosenTimeIndex = int.Parse(Console.ReadLine());
+                var chosenTime = bookedTimes[chosenTimeIndex - 1];
 
-               
+
+
                 var newAppointment = new Appointment
                 {
                     AppointmentDatetime = chosenTime,
                     EmployeeId = employeeId,
-                    TreatmentId = treatmentId
+                    TreatmentId = treatmentId,
+                    CustomerId = customerID
                 };
 
-                context.Appointments.Add(newAppointment);
+                 var ap = context.Appointments.FirstOrDefault(t => t.AppointmentDatetime == chosenTime);
+                 ap.AppointmentDatetime = chosenTime;
+                ap.EmployeeId = employeeId;
+                ap.TreatmentId = treatmentId;
+                ap.CustomerId = customerID;
+
                 context.SaveChanges();
 
                 Console.WriteLine("Customer booking suceeded!");
