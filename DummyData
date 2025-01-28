@@ -1,0 +1,43 @@
+-- Lägg till dummydata i Customers
+INSERT INTO Customers (FirstName, LastName, Email) 
+VALUES 
+('Anna', 'Svensson', 'anna.svensson@example.com'),
+('Erik', 'Johansson', 'erik.johansson@example.com'),
+('Lisa', 'Karlsson', 'lisa.karlsson@example.com');
+
+-- Lägg till dummydata i Employees
+INSERT INTO Employees (FirstName, LastName, Age) 
+VALUES 
+('Maria', 'Lindgren', 35),
+('Johan', 'Berg', 28),
+('Emma', 'Persson', 40);
+
+-- Lägg till dummydata i Treatments
+INSERT INTO Treatments (TreatmentName, TreatmentType) 
+VALUES 
+('Massage', 'Wellness'),
+('Ansiktsbehandling', 'Skincare'),
+('Hårklippning', 'Haircare');
+
+-- Lägg till dummydata i Appointments (bokade tider)
+INSERT INTO Appointments (AppointmentDatetime, EmployeeID, CustomerID, TreatmentID)
+VALUES
+('2025-01-27 10:00:00', 1, 1, 1), -- Maria behandlar Anna med Massage
+('2025-01-27 11:30:00', 2, 2, 2), -- Johan behandlar Erik med Ansiktsbehandling
+('2025-01-28 14:00:00', 3, 3, 3); -- Emma behandlar Lisa med Hårklippning
+
+-- Lägg till dummydata i Appointments (obokade tider)
+INSERT INTO Appointments (AppointmentDatetime, EmployeeID, CustomerID, TreatmentID)
+VALUES
+('2025-01-27 13:00:00', 1, NULL, 1), -- Maria har en obokad tid för Massage
+('2025-01-27 15:00:00', 2, NULL, 2), -- Johan har en obokad tid för Ansiktsbehandling
+('2025-01-28 10:00:00', 3, NULL, 3), -- Emma har en obokad tid för Hårklippning
+('2025-01-28 16:00:00', 1, NULL, 2); -- Maria har en obokad tid för Ansiktsbehandling
+
+-- Lägg till kopplingar i EmployeesTreatments
+INSERT INTO EmployeesTreatments (EmployeeID, TreatmentID)
+VALUES
+(1, 1), -- Maria kan ge Massage
+(2, 2), -- Johan kan ge Ansiktsbehandling
+(3, 3), -- Emma kan ge Hårklippning
+(1, 2); -- Maria kan också ge Ansiktsbehandling
